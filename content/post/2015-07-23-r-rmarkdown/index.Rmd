@@ -30,6 +30,8 @@ Life satisfaction is an extensive term associated with everyone in the world. It
 
 However, even though many studies have focused on life satisfaction, few studies have focused on Canada and tested Canadians' life satisfaction. To fill the gap, this report will analyze factors associated with Canadians' life satisfaction using the data from the 2017 Canadian General Social Survey (GSS). Based on the comprehensive information from GSS, this report aims to test whether the factors influencing life satisfaction from previous studies could be applied to Canada and explore some other factors linked with Canadians' life satisfaction.
 
+The report will contain six major parts, which are data, model, results, discussion, weaknesses, and next steps. 
+
 ## Data
 
 The data used in the report comes from the 2017 Canadian General Social Survey (GSS). GSS is a fundamental social survey in Canada. It collects Canadians' information on a diverse range of scale, including age, sex, income, and health condition (Government of Canada, 2017). More importantly, the 2017 GSS includes the variable "feelings life," which is perfectly suitable for the report's research questions. Because it consists of this comprehensive information about Canadians that allows analyzing the relationship between life satisfaction and other factors, we chose GSS as the primary data to study in the report. 
@@ -41,15 +43,19 @@ Even though the GSS is suitable for the research questions, it has some drawback
 
 ## Model
 
-To explore factors influncing Canadians' life satisfaction, we built a multiple linear regression model. Multiple linear regression model can help to identify the influences of multiple variables on a specific prediction variable. For example, if we want to use a multiple linear regression model to estimate this: $$y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \cdots + \beta_{k}x_{ki} + \epsilon_{i} $$
+To explore factors influncing Canadians' life satisfaction, we built a multiple linear regression model. Multiple linear regression model can help to identify the influences of multiple variables on a specific prediction variable. For example, if we want to use a multiple linear regression model to estimate this: $${Equation 1:}y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \cdots + \beta_{k}x_{ki} + \epsilon_{i} $$
 
-The multiple linear regression model should be: $$\hat{y} = b_{0} + b{1}x_{1} + b{2}x_{2} + \cdots + b_{k}x_{k}$$
+The multiple linear regression model should be: $${Equation 2:}\hat{y} = b_{0} + b{1}x_{1} + b{2}x_{2} + \cdots + b_{k}x_{k}$$
 
 Here, we use $b_{0} + b{1}x_{1} + b{2}x_{2} + \cdots + b_{k}x_{k}$ to predict $y_{i}$, so we use $\hat{y}$ to represent the prediction of $y_{i}$. Besides, $b_{0}$ is the intercept of the model, while $b_{1}, b_{2}, \dots,b_{k}$ refer to slopes corresponding to certain variables. 
 
-In this case, we used variables including age, gender, family incomes, number of children, number of marriages, self rated health, self rated mental health, and whether living with a parter, to predict people's life satisfaction. Our model looks like this:$$\hat{Life Satisfaction} = b_{0} + b_{1}{Age} + b_{2}{Gender} + b_{3}{Family Income} + $$
-$$b_{4}{Children Numbers} + b_{5}{Marriage Numbers} + b_{6}{Self Rated Health} +$$
-$$b_{7}{Self Rated Mental Health} + b_{8}{Living with a Partner} $$
+In this case, we used variables including age, gender, family incomes, number of children, number of marriages, self rated health, self rated mental health, and whether living with a partner, to predict people's life satisfaction. Our model looks like this:
+\begin{align*}
+{Equation 3:} \hat{Life Satisfaction} = & b_{0} + b_{1}{Age} + b_{2}{Gender}  \\
+& + b_{3}{Family Income} +b_{4}{Children Numbers}   \\
+& + b_{5}{Marriage Numbers} + b_{6}{Self Rated Health}  \\
+& +b_{7}{Self Rated Mental Health} + b_{8}{Living with a Partner} 
+\end{align*}
 
 Here, the intercept $b_{0}$ means that if all variables are 0, then life satisfaction is expected to be $b_{0}$. The slope, for example, $b_{1}$, means that if all other variables are 0, when age increases for one unit, life satisfaction is expected to increase $b_{1}$.
 
@@ -135,16 +141,26 @@ GSSanalysis <- svyglm(feelings_life ~ is_male + age + income_family + total_chil
 summary(GSSanalysis)
 ```
 
-Based on the summary, we can build the multiple linear regression model to predict Canadians' life satisfaction: $$\hat{Life Satisfaction} = 7.200 + 0.006{Age} - 0.102{Male} + 0.018{<$125,000 and more>}  $$
-$$-0.263{<$25,000 to $49,999>} - 0.142{<$50,000 to $74,999>}  $$
-$$-0.106{<$75,000 to $99,999>} -0.400{<Less than $25,000>} + 0.067{ChildrenNumbers} $$
-$$+  0.072{MarriageNumbers} +0.852{ExcellentHealth} +  0.655{VeryGood Health} $$
-$$ +0.443{Good Health} +0.080{FairHealt}  -0.760{PoorHealth} $$
-$$+ 0.679{ExcellentMental} + 0.224{VeryGoodMental} - 0.261{GoodMental}  $$
-$$ - 1.289{FairMental}-2.575{PoorMental} + 0.091{Live With Partner} $$
+Based on the summary, we can build the multiple linear regression model to predict Canadians' life satisfaction: 
+\begin{align*}
+{Equation 4:}\\
+\hat{Life Satisfaction}  = & 7.200 + 0.006{Age} - 0.102{Male} \\
+&  + 0.018{<\$125,000 and more>} -0.263{<\$25,000 to \$49,999>}   \\
+& - 0.142{<\$50,000 to \$74,999>} -0.106{<\$75,000 to \$99,999>}\\
+& -0.400{<Less than \$25,000>} + 0.067{ChildrenNumbers} \\
+& +  0.072{MarriageNumbers} +0.852{ExcellentHealth}  \\
+& +  0.655{VeryGood Health}+0.443{Good Health} \\
+& +0.080{FairHealt}  -0.760{PoorHealth} \\
+& + 0.679{ExcellentMental} + 0.224{VeryGoodMental} - 0.261{GoodMental}\\
+& - 1.289{FairMental}-2.575{PoorMental} + 0.091{Live With Partner} 
+\end{align*}
 
-By using the model, we can predict a person's life satisfaction based on their information. For example, if a 40-year-old male has 2 children, 1 marriage, lives with his partner, and rates himself as "good health" and "poor mental health," and the family income is in between \$75,000 and \$99,999, then the person's expected life satisfaction based on the model is:  $$\hat{Life Satisfaction} = 7.200 + 0.006 * 40 - 0.102 * 1 -0.106 * 1 $$
-$$+ 0.067 * 2 +  0.072 * 1 +0.443 * 1 -2.575 * 1 + 0.091 * 1 $$
+By using the model, we can predict a person's life satisfaction based on their information. For example, if a 40-year-old male has 2 children, 1 marriage, lives with his partner, and rates himself as "good health" and "poor mental health," and the family income is in between \$75,000 and \$99,999, then the person's expected life satisfaction based on the model is:  
+\begin{align*}
+\hat{Life Satisfaction}  = & 7.200 + 0.006 * 40 - 0.102 * 1 -0.106 * 1 \\
+& + 0.067 * 2 +  0.072 * 1 +0.443 * 1 -2.575 * 1 + 0.091 * 1 
+\end{align*}
+
 So the expected life satisfaction for the person is 4.1582.
 
 
