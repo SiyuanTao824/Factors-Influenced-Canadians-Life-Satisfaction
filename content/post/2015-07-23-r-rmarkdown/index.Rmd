@@ -196,11 +196,19 @@ Kassambara, A. (2018, October 19). Rename Data Frame Columns in R. Retrieved Oct
 
 Krumpal, I. (2013). Determinants of social desirability bias in sensitive surveys: a literature review. Quality & Quantity, 47(4), 2025-2047.
 
+Lumley, T. (2020) "survey: analysis of complex survey samples". R package version 4.0.
+
 Mental Health Commission of Canada (2013). Making the case for investing in mental health in Canada.
 
 Pallier, G., Wilkinson, R., Danthiir, V., Kleitman, S., Knezevic, G., Stankov, L., & Roberts, R. D. (2002). The role of individual differences in the accuracy of confidence judgments. The Journal of general psychology, 129(3), 257-299.
 
-Sauer， S. (2017, June 05). Sorting the x-axis in bargraphs using ggplot2. Retrieved October 15, 2020, from https://sebastiansauer.github.io/ordering-bars/
+R Core Team (2019). R: A language and environment for statistical computing. R Foundation
+for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+Sauer, S. (2017, June 05). Sorting the x-axis in bargraphs using ggplot2. Retrieved October 15, 2020, from https://sebastiansauer.github.io/ordering-bars/
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43),
+1686, https://doi.org/10.21105/joss.01686
 
 Willems, K. (2019). How to Make a Histogram with Basic R. Retrieved October 15, 2020, from https://www.datacamp.com/community/tutorials/make-histogram-basic-r
 
